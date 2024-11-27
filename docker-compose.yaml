@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: my_admin_user
+      POSTGRES_PASSWORD: my_admin_password
+      POSTGRES_DB: my_admin_db
+    volumes:
+    - postgres_data:/var/lib/postgresql/postgres_data
+    ports:
+    - "4127:5432"
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+     - "3544:8080"
+
+volumes:
+  postgres_data:
+
